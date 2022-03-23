@@ -1,0 +1,51 @@
+---
+registry:
+  server: https://index.docker.io/v1/
+  username: dashaun
+  password: 7783cc23-119e-4c73-bb34-2cab27010c66
+
+image_prefix: dashaun/wichita-vmug-workshop-
+
+kpack:
+  # credentials for the container registry you'll be using to store images
+  builder:
+    # path to the container repository where kpack build artifacts are stored
+    tag: dashaun/builder
+  # A comma-separated list of languages e.g. [java,nodejs] that will be supported for development
+  # Allowed values are:
+  # - java
+  # - nodejs
+  # - dotnet-core
+  # - go
+  # - ruby
+  # - php
+  languages: [java]
+
+vendir:
+  # For installation of CLI binaries
+  host:
+    # os: darwin, linux, windows
+    os: "linux"
+    # arch: amd64, arm64
+    arch: "amd64"
+  # getLatest overrides declared versions (disable using getLatest: "")
+  getLatest: ""
+  versions:
+    cartographer: 0.2.1
+    cert-manager: 1.5.3
+    kn: 1.2.0
+    kp: 0.4.2
+    kpack: 0.5.0
+    kubectl: 1.23.1
+    secretgen-controller: 0.6.0
+    source-controller: 0.19.2
+    tce: 0.9.1
+    yq: 4.16.1
+
+# knative config
+envoy:
+  service:
+    type: ClusterIP
+domain:
+  name: 127-0-0-1.nip.io
+  type: real
