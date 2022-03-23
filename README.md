@@ -95,42 +95,6 @@ tanzu uc create tce-local -c calico -p 80:80 -p 443:443
 kubectl get node
 ```
 
-## kubecolor
 
-```bash
-wget https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Linux_x86_64.tar.gz
-tar -xvzf kubecolor_0.0.20_Linux_x86_64.tar.gz
-sudo install -o root -g root -m 0755 kubecolor /usr/local/bin/kubecolor
-alias kubectl="kubecolor"
-kubectl get node
-```
 
-## tanzu package repository
 
-```bash
-# List installed repositories
-tanzu package repository list -A
-# List all available packages from installed repositories
-tanzu package available list -A
-# Upgrade repository to newer version
-tanzu package repository update tkg-core-repository --url projects.registry.vmware.com/tce/main:v0.10.3 -n tanzu-package-repo-global
-```
-
-## Cert-Manager
-
-```bash
-# list available versions
-tanzu package available list cert-manager.community.tanzu.vmware.com -n default
-# Get configuration options for 1.6.1
-tanzu package available get cert-manager.community.tanzu.vmware.com/1.6.1 -n default --values-schema
-# Install
-tanzu package install cert-manager --package-name cert-manager.community.tanzu.vmware.com --version 1.6.1
-# Check status
-tanzu package installed list
-# Delete
-tanzu package installed delete cert-manager
-```
-
-## What about helm?
-
-- As a platform engineer, I want to give my developers a consistent, supported platform
